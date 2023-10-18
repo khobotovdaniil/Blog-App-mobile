@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { View } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -26,9 +25,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer>
-        <AppNavigation />
-      </NavigationContainer>
+      <AppNavigation />
     </View>
   )
 }
