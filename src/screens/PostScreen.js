@@ -1,18 +1,65 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet, Image, Button, ScrollView, Alert } from 'react-native';
+import { DATA } from '../data';
+import { THEME } from '../theme';
 
-export const PostScreen = ({ }) => {
+export const PostScreen = ({ route, navigation }) => {
+  const { postId } = route.params;
+
+  const post = DATA.find(p => p.id === postId)
+
+  const removeHandler = () => {
+    Alert.alert(
+      'Удаление поста',
+      'Вы точно хотите удалить пост?',
+      [
+        {
+          text: 'Отменить',
+          style: 'cancel',
+        },
+        {
+          text: 'Удалить',
+          style: 'destructive',
+          onPress: () => { }
+        },
+      ],
+      { cancelable: false }
+    );
+  }
+
   return (
-    <View style={styles.center}>
-      <Text>PostScreen</Text>
-    </View>
+    <ScrollView>
+      <View style={styles.wrapper}>
+        <Image
+          style={styles.image}
+          source={{ uri: post.img }}
+        />
+        <View style={styles.textWrap}>
+          <Text style={styles.title}>{post.text}</Text>
+        </View>
+        <Button
+          title='Удалить'
+          color={THEME.DANGER_COLOR}
+          onPress={removeHandler}
+        />
+      </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  center: {
+  wrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    padding: 10
+  },
+  textWrap: {
+    marginVertical: 20
+  },
+  title: {
+    fontFamily: 'open-regular'
+  },
+  image: {
+    width: '100%',
+    height: 200
   }
 })
