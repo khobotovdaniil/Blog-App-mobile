@@ -3,10 +3,10 @@ import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { PostScreen } from "../screens/PostScreen";
-import { BookedScreen } from "../screens/BookedScreen";
-import { THEME } from "../theme";
-import { AppHeaderIcon } from '../components/AppHeaderIcon'
+import { PostScreen } from "../../screens/PostScreen";
+import { BookedScreen } from "../../screens/BookedScreen";
+import { THEME } from "../../theme";
+import { AppHeaderIcon } from '../../components/AppHeaderIcon'
 
 const Stack = createNativeStackNavigator();
 
@@ -24,7 +24,16 @@ export const BookedStackScreen = () => {
         name="Booked"
         component={BookedScreen}
         options={{
-          title: 'Мой блог'
+          title: 'Избранное',
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+              <Item
+                title='Toggle Drawer'
+                iconName={'ios-menu'}
+                onPress={() => console.log('Press drawer')}
+              />
+            </HeaderButtons>
+          )
         }}
       />
       <Stack.Screen

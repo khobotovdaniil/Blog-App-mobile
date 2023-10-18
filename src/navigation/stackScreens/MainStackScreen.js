@@ -3,11 +3,11 @@ import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { PostScreen } from "../screens/PostScreen";
-import { MainScreen } from "../screens/MainScreen";
+import { PostScreen } from "../../screens/PostScreen";
+import { MainScreen } from "../../screens/MainScreen";
 
-import { THEME } from "../theme";
-import { AppHeaderIcon } from '../components/AppHeaderIcon'
+import { THEME } from "../../theme";
+import { AppHeaderIcon } from '../../components/AppHeaderIcon'
 
 const MainStack = createNativeStackNavigator();
 

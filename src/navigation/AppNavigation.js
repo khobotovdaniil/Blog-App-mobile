@@ -23,8 +23,8 @@ export const AppNavigation = () => {
           tabBarActiveTintColor: THEME.MAIN_COLOR
         })}
       >
-        <BottomTab.Screen name="All" component={MainStackScreen} />
-        <BottomTab.Screen name="Booked" component={BookedStackScreen} />
+        <BottomTab.Screen name="Все" component={MainStackScreen} />
+        <BottomTab.Screen name="Избранное" component={BookedStackScreen} />
       </BottomTab.Navigator>
     </NavigationContainer>
   )
