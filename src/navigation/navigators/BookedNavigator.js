@@ -10,7 +10,7 @@ import { AppHeaderIcon } from '../../components/AppHeaderIcon'
 
 const Stack = createNativeStackNavigator();
 
-export const BookedStackScreen = () => {
+export const BookedNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{

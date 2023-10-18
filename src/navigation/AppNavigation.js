@@ -6,8 +6,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from 'react-native-paper';
 
 import { THEME } from "../theme";
-import { BookedStackScreen } from './stackScreens/BookedStackScreen'
-import { MainStackScreen } from "./stackScreens/MainStackScreen";
+import { BookedNavigator } from './navigators/BookedNavigator'
+import { AllNavigator } from "./navigators/AllNavigator";
 import { Platform } from "react-native";
 
 const BottomTab = Platform.OS === 'android' ? createMaterialBottomTabNavigator() : createBottomTabNavigator();
@@ -38,8 +38,8 @@ export const AppNavigation = () => {
           headerShown: false
         })}
       >
-        <BottomTab.Screen name="All" component={MainStackScreen} />
-        <BottomTab.Screen name="Marked" component={BookedStackScreen} />
+        <BottomTab.Screen name="All" component={AllNavigator} />
+        <BottomTab.Screen name="Marked" component={BookedNavigator} />
       </BottomTab.Navigator>
     </NavigationContainer>
   )

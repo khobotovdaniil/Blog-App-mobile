@@ -9,11 +9,11 @@ import { MainScreen } from "../../screens/MainScreen";
 import { THEME } from "../../theme";
 import { AppHeaderIcon } from '../../components/AppHeaderIcon'
 
-const MainStack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
-export const MainStackScreen = () => {
+export const AllNavigator = () => {
   return (
-    <MainStack.Navigator
+    <Stack.Navigator
       initialRouteName='Main'
       screenOptions={{
         headerStyle: {
@@ -22,7 +22,7 @@ export const MainStackScreen = () => {
         headerTintColor: Platform.OS === 'android' ? '#fff' : THEME.MAIN_COLOR
       }}
     >
-      <MainStack.Screen
+      <Stack.Screen
         name="Main"
         component={MainScreen}
         options={{
@@ -47,7 +47,7 @@ export const MainStackScreen = () => {
           )
         }}
       />
-      <MainStack.Screen
+      <Stack.Screen
         name="Post"
         component={PostScreen}
         options={({ route }) => ({
@@ -63,6 +63,6 @@ export const MainStackScreen = () => {
           )
         })}
       />
-    </MainStack.Navigator>
+    </Stack.Navigator>
   )
 }
