@@ -2,7 +2,7 @@ export const DATA = [
   {
     id: '1',
     img:
-      'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg',
+      'https://all.accor.com/magazine/imagerie/1-34bc.jpg',
     text: 'Awesome text for post 1',
     date: new Date().toJSON(),
     booked: true
@@ -18,7 +18,7 @@ export const DATA = [
   {
     id: '3',
     img:
-      'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg',
+      'https://7d9e88a8-f178-4098-bea5-48d960920605.selcdn.net/e3cf7cfa-bab3-4f88-8f6f-56b8fb431024/',
     text: 'Awesome text for post 3',
     date: new Date().toJSON(),
     booked: false
@@ -34,7 +34,7 @@ export const DATA = [
   {
     id: '5',
     img:
-      'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg',
+      'https://all.accor.com/magazine/imagerie/1-34bc.jpg',
     text: 'Awesome text for post 5',
     date: new Date().toJSON(),
     booked: false
