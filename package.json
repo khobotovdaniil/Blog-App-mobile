@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/bottom-tabs": "^6.5.9",
+    "@react-navigation/material-bottom-tabs": "^6.2.17",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/native-stack": "^6.9.14",
     "@react-navigation/stack": "^6.3.18",
@@ -21,6 +22,8 @@
     "react": "18.2.0",
     "react-native": "0.72.5",
     "react-native-gesture-handler": "~2.12.0",
+    "react-native-paper": "^5.11.0",
+    "react-native-vector-icons": "^10.0.0",
     "react-navigation-header-buttons": "^11.1.1"
   },
   "devDependencies": {
