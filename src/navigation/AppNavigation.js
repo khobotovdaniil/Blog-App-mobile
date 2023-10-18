@@ -11,8 +11,6 @@ import { AppHeaderIcon } from '../components/AppHeaderIcon'
 const Stack = createNativeStackNavigator();
 
 export const AppNavigation = () => {
-  const iconName = 'ios-star'
-
   return (
     <Stack.Navigator
       initialRouteName='Home'
@@ -57,7 +55,7 @@ export const AppNavigation = () => {
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
               <Item
                 title='Take Photo'
-                iconName={iconName}
+                iconName={route.params.booked ? 'ios-star' : 'ios-star-outline'}
                 onPress={() => console.log('Press photo')}
               />
             </HeaderButtons>
