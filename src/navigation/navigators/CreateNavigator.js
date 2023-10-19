@@ -3,14 +3,13 @@ import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { PostScreen } from "../../screens/PostScreen";
-import { BookedScreen } from "../../screens/BookedScreen";
+import { CreateScreen } from "../../screens/CreateScreen";
 import { THEME } from "../../theme";
 import { AppHeaderIcon } from '../../components/AppHeaderIcon'
 
 const Stack = createNativeStackNavigator();
 
-export const BookedNavigator = ({ navigation }) => {
+export const CreateNavigator = ({ navigation }) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,10 +20,10 @@ export const BookedNavigator = ({ navigation }) => {
       }}
     >
       <Stack.Screen
-        name="Booked"
-        component={BookedScreen}
+        name="Create"
+        component={CreateScreen}
         options={{
-          title: 'Избранное',
+          title: 'Создать',
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
               <Item
@@ -35,22 +34,6 @@ export const BookedNavigator = ({ navigation }) => {
             </HeaderButtons>
           )
         }}
-      />
-      <Stack.Screen
-        name="Post"
-        component={PostScreen}
-        options={({ route }) => ({
-          title: `Пост от ${new Date(route.params.date).toLocaleDateString()}`,
-          headerRight: () => (
-            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-              <Item
-                title='Add to Booked'
-                iconName={route.params.booked ? 'ios-star' : 'ios-star-outline'}
-                onPress={() => console.log('Press Book')}
-              />
-            </HeaderButtons>
-          )
-        })}
       />
     </Stack.Navigator>
   )

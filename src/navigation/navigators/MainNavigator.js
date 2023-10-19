@@ -5,13 +5,12 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { PostScreen } from "../../screens/PostScreen";
 import { MainScreen } from "../../screens/MainScreen";
-
 import { THEME } from "../../theme";
 import { AppHeaderIcon } from '../../components/AppHeaderIcon'
 
 const Stack = createNativeStackNavigator();
 
-export const AllNavigator = () => {
+export const MainNavigator = ({ navigation }) => {
   return (
     <Stack.Navigator
       initialRouteName='Main'
@@ -32,7 +31,7 @@ export const AllNavigator = () => {
               <Item
                 title='Take Photo'
                 iconName='ios-camera'
-                onPress={() => console.log('Press photo')}
+                onPress={() => navigation.navigate('Create')}
               />
             </HeaderButtons>
           ),
@@ -41,7 +40,7 @@ export const AllNavigator = () => {
               <Item
                 title='Toggle Drawer'
                 iconName={'ios-menu'}
-                onPress={() => console.log('Press drawer')}
+                onPress={() => navigation.toggleDrawer()}
               />
             </HeaderButtons>
           )
@@ -55,9 +54,9 @@ export const AllNavigator = () => {
           headerRight: () => (
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
               <Item
-                title='Take Photo'
+                title='Add to Booked'
                 iconName={route.params.booked ? 'ios-star' : 'ios-star-outline'}
-                onPress={() => console.log('Press photo')}
+                onPress={() => console.log('Press Book')}
               />
             </HeaderButtons>
           )
