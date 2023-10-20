@@ -5,8 +5,6 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { THEME } from "../theme";
 
-
-
 export const AppHeaderIcon = props => (
   <HeaderButton
     {...props}

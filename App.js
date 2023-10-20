@@ -1,10 +1,12 @@
 import 'react-native-gesture-handler';
 import React, { useCallback } from 'react';
-import { View } from "react-native";
+import { View } from 'react-native';
+import { Provider } from 'react-redux';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { AppNavigation } from './src/navigation/AppNavigation';
+import store from './src/store';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,8 +27,10 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <AppNavigation />
-    </View>
+    <Provider store={store}>
+      <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <AppNavigation />
+      </View>
+    </Provider>
   )
 }

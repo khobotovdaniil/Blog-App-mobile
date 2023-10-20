@@ -26,23 +26,29 @@ export const AppNavigation = () => {
           component={BottomTabNavigator}
           options={{
             title: 'Главная',
-            // drawerIcon: () => (
-            //   <Ionicons name='ios-star' />
-            // )
+            drawerIcon: () => (
+              <Ionicons name='home' size={22} color={THEME.MAIN_COLOR} />
+            )
           }}
         />
         <Drawer.Screen
           name="CreateNavigator"
           component={CreateNavigator}
           options={{
-            title: 'Новый пост'
+            title: 'Новый пост',
+            drawerIcon: () => (
+              <Ionicons name='ios-camera' size={22} color={THEME.MAIN_COLOR} />
+            )
           }}
         />
         <Drawer.Screen
           name="AboutNavigator"
           component={AboutNavigator}
           options={{
-            title: 'О приложении'
+            title: 'О приложении',
+            drawerIcon: () => (
+              <Ionicons name='information-circle' size={22} color={THEME.MAIN_COLOR} />
+            )
           }}
         />
       </Drawer.Navigator>
