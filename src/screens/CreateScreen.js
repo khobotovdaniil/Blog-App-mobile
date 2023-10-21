@@ -1,18 +1,76 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  Button,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { THEME } from '../theme';
+import { addPost } from '../store/actions/postAction';
 
-export const CreateScreen = ({}) => {
+export const CreateScreen = ({ navigation }) => {
+  const dispatch = useDispatch()
+  const [text, setText] = useState('')
+
+  const img = 'https://all.accor.com/magazine/imagerie/1-34bc.jpg'
+
+  const saveHandler = () => {
+    const post = {
+      img,
+      text,
+      date: new Date().toJSON(),
+      booked: false
+    }
+    dispatch(addPost(post))
+    navigation.navigate('Main')
+  }
+
   return (
-    <View style={styles.center}>
-      <Text>CreateScreen</Text>
-    </View>
+    <ScrollView>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
+        <View style={styles.wrapper}>
+          <Text style={styles.title}>Создание нового поста</Text>
+          <TextInput
+            style={styles.text}
+            placeholder='Введите текст заметки'
+            value={text}
+            onChangeText={setText}
+            multiline
+          />
+          <Image
+            style={{ width: '100%', height: 200, marginBottom: 20 }}
+            source={{ uri: img }}
+          />
+          <Button
+            title='Создать пост'
+            color={THEME.MAIN_COLOR}
+            onPress={saveHandler}
+          />
+        </View>
+      </TouchableWithoutFeedback>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  center: {
+  wrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    padding: 10
+  },
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontFamily: 'open-regular',
+    marginVertical: 10
+  },
+  text: {
+    padding: 10,
+    marginBottom: 10
   }
 })
