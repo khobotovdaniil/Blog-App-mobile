@@ -31,7 +31,7 @@ export const MainNavigator = ({ navigation }) => {
               <Item
                 title='Take Photo'
                 iconName='ios-camera'
-                onPress={() => navigation.navigate('Create')}
+                onPress={() => navigation.navigate('CreateNavigator', { screen: 'Create' })}
               />
             </HeaderButtons>
           ),
@@ -46,22 +46,7 @@ export const MainNavigator = ({ navigation }) => {
           )
         }}
       />
-      <Stack.Screen
-        name="Post"
-        component={PostScreen}
-        options={({ route }) => ({
-          title: `Пост от ${new Date(route.params.date).toLocaleDateString()}`,
-          headerRight: () => (
-            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-              <Item
-                title='Add to Booked'
-                iconName={route.params.booked ? 'ios-star' : 'ios-star-outline'}
-                onPress={() => console.log('Press Book')}
-              />
-            </HeaderButtons>
-          )
-        })}
-      />
+      <Stack.Screen name="Post" component={PostScreen} />
     </Stack.Navigator>
   )
 }
