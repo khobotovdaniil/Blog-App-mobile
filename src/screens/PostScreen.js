@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { View, Text, StyleSheet, Image, Button, ScrollView, Alert } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { DATA } from '../data';
 import { THEME } from '../theme';
-import { toggleBooked } from '../store/actions/postAction';
+import { removePost, toggleBooked } from '../store/actions/postAction';
 import { AppHeaderIcon } from '../components/AppHeaderIcon';
 
 
@@ -13,7 +12,9 @@ export const PostScreen = ({ route, navigation }) => {
   const dispatch = useDispatch()
   const { postId, date } = route.params
 
-  const post = DATA.find(p => p.id === postId)
+  const post = useSelector(state =>
+    state.post.allPosts.find(p => p.id === postId)
+  )
 
   const booked = useSelector(state =>
     state.post.bookedPosts.some(post => post.id === postId)
@@ -54,11 +55,18 @@ export const PostScreen = ({ route, navigation }) => {
         {
           text: 'Удалить',
           style: 'destructive',
-          onPress: () => { }
+          onPress() {
+            navigation.navigate('Main')
+            dispatch(removePost(postId))
+          }
         },
       ],
       { cancelable: false }
     );
+  }
+
+  if (!post) {
+    return null
   }
 
   return (
