@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Image, Button } from "react-native";
-import { launchCameraAsync, useCameraPermissions, PermissionStatus } from 'expo-image-picker';
+import { launchCameraAsync, launchImageLibraryAsync, useCameraPermissions, PermissionStatus } from 'expo-image-picker';
+
+import { THEME } from "../theme";
 
 export const PhotoPicker = ({ onPick }) => {
   const [cameraPermissionInformation, requestPermission] = useCameraPermissions();
@@ -36,9 +38,22 @@ export const PhotoPicker = ({ onPick }) => {
     onPick(img.assets[0].uri)
   }
 
+  const takePicture = async () => {
+    const img = await launchImageLibraryAsync({
+      allowsEditing: false,
+      aspect: [16, 9],
+      quality: 0.7
+    })
+    setImage(img.assets[0].uri)
+    onPick(img.assets[0].uri)
+  }
+
   return (
     <View style={styles.wrapper}>
-      <Button title='Сделать фото' onPress={takePhoto} />
+      <View style={styles.buttons}>
+        <Button color={THEME.MAIN_COLOR} title='Сделать фото' onPress={takePhoto} />
+        <Button color={THEME.MAIN_COLOR} title='Фото из галереи' onPress={takePicture} />
+      </View>
       {image && <Image style={styles.image} source={{ uri: image }} />}
     </View>
   )
@@ -46,7 +61,11 @@ export const PhotoPicker = ({ onPick }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 10
+    marginVertical: 20
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   image: {
     width: '100%',
