@@ -13,6 +13,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { THEME } from '../theme';
 import { addPost } from '../store/actions/postAction';
+import { PhotoPicker } from '../components/PhotoPicker';
 
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -43,10 +44,7 @@ export const CreateScreen = ({ navigation }) => {
             onChangeText={setText}
             multiline
           />
-          <Image
-            style={{ width: '100%', height: 200, marginBottom: 20 }}
-            source={{ uri: img }}
-          />
+          <PhotoPicker />
           <Button
             title='Создать пост'
             color={THEME.MAIN_COLOR}
