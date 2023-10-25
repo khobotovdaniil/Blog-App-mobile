@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TextInput,
-  Image,
   Button,
   ScrollView,
   TouchableWithoutFeedback,
@@ -18,18 +17,21 @@ import { PhotoPicker } from '../components/PhotoPicker';
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-
-  const img = 'https://all.accor.com/magazine/imagerie/1-34bc.jpg'
+  const imgRef = useRef()
 
   const saveHandler = () => {
     const post = {
-      img,
+      img: imgRef.current,
       text,
       date: new Date().toJSON(),
       booked: false
     }
     dispatch(addPost(post))
     navigation.navigate('Main')
+  }
+
+  const photoPickHandler = uri => {
+    imgRef.current = uri
   }
 
   return (
@@ -44,11 +46,12 @@ export const CreateScreen = ({ navigation }) => {
             onChangeText={setText}
             multiline
           />
-          <PhotoPicker />
+          <PhotoPicker onPick={photoPickHandler} />
           <Button
             title='Создать пост'
             color={THEME.MAIN_COLOR}
             onPress={saveHandler}
+            disabled={!text}
           />
         </View>
       </TouchableWithoutFeedback>

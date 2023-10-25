@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Image, Button } from "react-native";
 import { launchCameraAsync, useCameraPermissions, PermissionStatus } from 'expo-image-picker';
 
-export const PhotoPicker = ({ }) => {
+export const PhotoPicker = ({ onPick }) => {
   const [cameraPermissionInformation, requestPermission] = useCameraPermissions();
   const [image, setImage] = useState(null)
 
@@ -32,30 +32,14 @@ export const PhotoPicker = ({ }) => {
       aspect: [16, 9],
       quality: 0.7
     });
-    setImage(img.assets)
+    setImage(img.assets[0].uri)
+    onPick(img.assets[0].uri)
   }
-
-  // const takePhoto = async () => {
-  //   const hasPermissions = await ImagePicker.getCameraPermissionsAsync()
-
-  //   if (hasPermissions) {
-  //     return
-  //   }
-
-  //   const img = await ImagePicker.launchCameraAsync({
-  //     mediaTypes: ImagePicker.MediaTypeOptions.All,
-  //     quality: 0.7,
-  //     allowsEditing: false,
-  //     aspect: [16, 9]
-  //   })
-
-  //   console.log(img);
-  // }
 
   return (
     <View style={styles.wrapper}>
       <Button title='Сделать фото' onPress={takePhoto} />
-      {image && <Image style={styles.image} source={{ uri: image[0].uri }} />}
+      {image && <Image style={styles.image} source={{ uri: image }} />}
     </View>
   )
 }
