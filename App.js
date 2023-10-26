@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import { AppNavigation } from './src/navigation/AppNavigation';
 import store from './src/store';
+import { bootstrap } from './src/bootstrap';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,6 +18,7 @@ export default function App() {
   });
 
   const onLayoutRootView = useCallback(async () => {
+    bootstrap();
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
