@@ -14,24 +14,28 @@ import { THEME } from '../theme';
 import { addPost } from '../store/actions/postAction';
 import { PhotoPicker } from '../components/PhotoPicker';
 
+
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-  const imgRef = useRef()
+  const [img, setImg] = useState('')
+  // const imgRef = useRef()
 
   const saveHandler = () => {
     const post = {
-      img: imgRef.current,
+      img,
       text,
       date: new Date().toJSON(),
       booked: false
     }
     dispatch(addPost(post))
+    setText(null)
+    setImg('');
     navigation.navigate('Main')
   }
 
   const photoPickHandler = uri => {
-    imgRef.current = uri
+    setImg(uri)
   }
 
   return (
@@ -46,7 +50,7 @@ export const CreateScreen = ({ navigation }) => {
             onChangeText={setText}
             multiline
           />
-          <PhotoPicker onPick={photoPickHandler} />
+          <PhotoPicker onPick={photoPickHandler} img={img} />
           <Button
             title='Создать пост'
             color={THEME.MAIN_COLOR}

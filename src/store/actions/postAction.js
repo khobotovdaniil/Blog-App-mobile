@@ -14,18 +14,20 @@ export const loadPosts = () => {
   }
 }
 
-export const toggleBooked = id => {
-  return {
+export const toggleBooked = post => async dispatch => {
+  await DB.updatePost(post)
+  dispatch({
     type: TOGGLE_BOOKED,
-    payload: id
-  }
+    payload: post.id
+  })
 }
 
-export const removePost = id => {
-  return {
+export const removePost = id => async dispatch => {
+  await DB.removePost(id)
+  dispatch({
     type: REMOVE_POST,
     payload: id
-  }
+  })
 }
 
 export const addPost = post => async dispatch => {
