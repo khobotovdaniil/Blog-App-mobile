@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -19,7 +19,6 @@ export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
   const [img, setImg] = useState('')
-  // const imgRef = useRef()
 
   const saveHandler = () => {
     const post = {
@@ -55,7 +54,7 @@ export const CreateScreen = ({ navigation }) => {
             title='Создать пост'
             color={THEME.MAIN_COLOR}
             onPress={saveHandler}
-            disabled={!text}
+            disabled={!text || !img}
           />
         </View>
       </TouchableWithoutFeedback>
